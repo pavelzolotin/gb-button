@@ -1,0 +1,33 @@
+{
+	"apiVersion": 2,
+	"name": "gb-block/gb-button",
+	"version": "0.1.0",
+	"title": "GB Button",
+	"category": "design",
+	"icon": "button",
+	"description": "A button block.",
+	"keywords": [ "Button" ],
+	"supports": {
+		"html": false,
+		"color": false
+	},
+	"textdomain": "gb-button",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css",
+	"attributes": {
+		"text": {
+			"type": "string",
+			"source": "html",
+			"selector": "a"
+		},
+		"textAlignment": {
+			"type": "string",
+			"default": "left"
+		},
+		"gbButtonWidth": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}
