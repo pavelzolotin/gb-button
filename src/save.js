@@ -2,7 +2,7 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
 import classnames from 'classnames';
 
 export default function save( { attributes } ) {
-	const { text, textAlignment, gbButtonWidth } = attributes;
+	const { url, text, textAlignment, gbButtonWidth } = attributes;
 
 	const alignClasses = classnames( `gb-button-align-${ textAlignment }` );
 
@@ -15,26 +15,26 @@ export default function save( { attributes } ) {
 			{ ! gbButtonWidth && (
 				<>
 					<div className="wp-block-gb-block-gb-button__wrapper">
-						<button className="wp-block-gb-block-gb-button__btn">
+						<div className="wp-block-gb-block-gb-button__btn">
 							<RichText.Content
 								className="wp-block-gb-block-gb-button__btn-text"
+								href={ url }
 								value={ text }
-								tagName="a"
 							/>
-						</button>
+						</div>
 					</div>
 				</>
 			) }
 			{ gbButtonWidth && (
 				<>
 					<div className="wp-block-gb-block-gb-button__wrapper">
-						<button className="wp-block-gb-block-gb-button__btn full-width">
+						<div className="wp-block-gb-block-gb-button__btn full-width">
 							<RichText.Content
 								className="wp-block-gb-block-gb-button__btn-text"
-								tagName="a"
+								href={ url }
 								value={ text }
 							/>
-						</button>
+						</div>
 					</div>
 				</>
 			) }

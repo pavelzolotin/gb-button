@@ -9,7 +9,8 @@
 	"keywords": [ "Button" ],
 	"supports": {
 		"html": false,
-		"color": false
+		"color": false,
+		"anchor": true
 	},
 	"textdomain": "gb-button",
 	"editorScript": "file:./build/index.js",
@@ -28,6 +29,12 @@
 		"gbButtonWidth": {
 			"type": "boolean",
 			"default": false
+		},
+		"url": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "href"
 		}
 	}
 }
