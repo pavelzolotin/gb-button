@@ -8,6 +8,7 @@ import {
 	AlignmentToolbar,
 	RichText,
 	InspectorControls,
+	URLInput,
 } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
 
@@ -19,14 +20,18 @@ import './editor.scss';
 
 function ButtonEdit( props ) {
 	const { attributes, setAttributes } = props;
-	const { url, text, textAlignment, gbButtonWidth } = attributes;
+	const { url, text, title, textAlignment, gbButtonWidth } = attributes;
 
 	const setButtonText = ( newText ) => {
 		setAttributes( { text: newText } );
 	};
 
-	const buttonAlignment = ( newAlignment ) => {
+	const onChangeButtonAlignment = ( newAlignment ) => {
 		setAttributes( { textAlignment: newAlignment } );
+	};
+
+	const onChangeURL = ( newURL ) => {
+		setAttributes( { url: newURL } );
 	};
 
 	const alignClasses = classnames( `gb-button-align-${ textAlignment }` );
@@ -36,7 +41,7 @@ function ButtonEdit( props ) {
 			<BlockControls>
 				<AlignmentToolbar
 					value={ textAlignment }
-					onChange={ buttonAlignment }
+					onChange={ onChangeButtonAlignment }
 				/>
 			</BlockControls>
 			<InspectorControls>
@@ -54,6 +59,11 @@ function ButtonEdit( props ) {
 						} }
 						checked={ gbButtonWidth }
 					/>
+					<URLInput
+						className="wp-block-gb-block-gb-button__input"
+						value={ url }
+						onChange={ onChangeURL }
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<div
@@ -61,54 +71,30 @@ function ButtonEdit( props ) {
 					className: alignClasses,
 				} ) }
 			>
-				{ ! gbButtonWidth && (
-					<>
-						<div className="wp-block-gb-block-gb-button__wrapper">
-							<div className="wp-block-gb-block-gb-button__btn">
-								<RichText
-									className="wp-block-gb-block-gb-button__btn-text"
-									href={ url }
-									aria-label={ __(
-										'Button text',
-										'gb-button'
-									) }
-									placeholder={ __(
-										'Add text…',
-										'gb-button'
-									) }
-									value={ text }
-									onChange={ ( value ) =>
-										setButtonText( value )
-									}
-								/>
-							</div>
+				<>
+					<div className="wp-block-gb-block-gb-button__wrapper">
+						<div
+							className={ `wp-block-gb-block-gb-button__btn ${
+								gbButtonWidth ? 'full-width' : ''
+							}` }
+						>
+							<RichText
+								className="wp-block-gb-block-gb-button__btn-text"
+								href={ url }
+								aria-label={ __( 'Button text', 'gb-button' ) }
+								placeholder={ __( 'Add text…', 'gb-button' ) }
+								title={ title }
+								value={ text }
+								onChange={ ( value ) => setButtonText( value ) }
+								identifier="text"
+								allowedFormats={ [
+									'core/bold',
+									'core/italic',
+								] }
+							/>
 						</div>
-					</>
-				) }
-				{ gbButtonWidth && (
-					<>
-						<div className="wp-block-gb-block-gb-button__wrapper">
-							<div className="wp-block-gb-block-gb-button__btn full-width">
-								<RichText
-									className="wp-block-gb-block-gb-button__btn-text"
-									href={ url }
-									aria-label={ __(
-										'Button text',
-										'gb-button'
-									) }
-									placeholder={ __(
-										'Add text…',
-										'gb-button'
-									) }
-									value={ text }
-									onChange={ ( value ) =>
-										setButtonText( value )
-									}
-								/>
-							</div>
-						</div>
-					</>
-				) }
+					</div>
+				</>
 			</div>
 		</>
 	);
