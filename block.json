@@ -9,7 +9,6 @@
 	"keywords": [ "Button" ],
 	"supports": {
 		"html": false,
-		"color": false,
 		"anchor": true
 	},
 	"textdomain": "gb-button",
@@ -17,6 +16,18 @@
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css",
 	"attributes": {
+		"url": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "href"
+		},
+		"title": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "title"
+		},
 		"text": {
 			"type": "string",
 			"source": "html",
@@ -29,12 +40,6 @@
 		"gbButtonWidth": {
 			"type": "boolean",
 			"default": false
-		},
-		"url": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "a",
-			"attribute": "href"
 		}
 	}
 }

@@ -12,32 +12,23 @@ export default function save( { attributes } ) {
 				className: alignClasses,
 			} ) }
 		>
-			{ ! gbButtonWidth && (
-				<>
-					<div className="wp-block-gb-block-gb-button__wrapper">
-						<div className="wp-block-gb-block-gb-button__btn">
-							<RichText.Content
-								className="wp-block-gb-block-gb-button__btn-text"
-								href={ url }
-								value={ text }
-							/>
-						</div>
+			<>
+				<div className="wp-block-gb-block-gb-button__wrapper">
+					<div
+						className={ `wp-block-gb-block-gb-button__btn ${
+							gbButtonWidth ? 'full-width' : ''
+						}` }
+					>
+						<RichText.Content />
+						<a
+							href={ url }
+							className="wp-block-gb-block-gb-button__btn-text"
+						>
+							{ text }
+						</a>
 					</div>
-				</>
-			) }
-			{ gbButtonWidth && (
-				<>
-					<div className="wp-block-gb-block-gb-button__wrapper">
-						<div className="wp-block-gb-block-gb-button__btn full-width">
-							<RichText.Content
-								className="wp-block-gb-block-gb-button__btn-text"
-								href={ url }
-								value={ text }
-							/>
-						</div>
-					</div>
-				</>
-			) }
+				</div>
+			</>
 		</div>
 	);
 }

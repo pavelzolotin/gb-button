@@ -43,6 +43,7 @@ function ButtonEdit(props) {
   const {
     url,
     text,
+    title,
     textAlignment,
     gbButtonWidth
   } = attributes;
@@ -53,16 +54,22 @@ function ButtonEdit(props) {
     });
   };
 
-  const buttonAlignment = newAlignment => {
+  const onChangeButtonAlignment = newAlignment => {
     setAttributes({
       textAlignment: newAlignment
+    });
+  };
+
+  const onChangeURL = newURL => {
+    setAttributes({
+      url: newURL
     });
   };
 
   const alignClasses = classnames__WEBPACK_IMPORTED_MODULE_4___default()(`gb-button-align-${textAlignment}`);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.AlignmentToolbar, {
     value: textAlignment,
-    onChange: buttonAlignment
+    onChange: onChangeButtonAlignment
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Settings', 'gb-button')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
@@ -75,30 +82,26 @@ function ButtonEdit(props) {
       });
     },
     checked: gbButtonWidth
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.URLInput, {
+    className: "wp-block-gb-block-gb-button__input",
+    value: url,
+    onChange: onChangeURL
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     className: alignClasses
-  }), !gbButtonWidth && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wp-block-gb-block-gb-button__wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wp-block-gb-block-gb-button__btn"
+    className: `wp-block-gb-block-gb-button__btn ${gbButtonWidth ? 'full-width' : ''}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     className: "wp-block-gb-block-gb-button__btn-text",
     href: url,
     "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button text', 'gb-button'),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add text…', 'gb-button'),
+    title: title,
     value: text,
-    onChange: value => setButtonText(value)
-  })))), gbButtonWidth && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wp-block-gb-block-gb-button__wrapper"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wp-block-gb-block-gb-button__btn full-width"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    className: "wp-block-gb-block-gb-button__btn-text",
-    href: url,
-    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button text', 'gb-button'),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add text…', 'gb-button'),
-    value: text,
-    onChange: value => setButtonText(value)
+    onChange: value => setButtonText(value),
+    identifier: "text",
+    allowedFormats: ['core/bold', 'core/italic']
   }))))));
 }
 
@@ -162,23 +165,14 @@ function save({
   const alignClasses = classnames__WEBPACK_IMPORTED_MODULE_2___default()(`gb-button-align-${textAlignment}`);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: alignClasses
-  }), !gbButtonWidth && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wp-block-gb-block-gb-button__wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wp-block-gb-block-gb-button__btn"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    className: "wp-block-gb-block-gb-button__btn-text",
+    className: `wp-block-gb-block-gb-button__btn ${gbButtonWidth ? 'full-width' : ''}`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: url,
-    value: text
-  })))), gbButtonWidth && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wp-block-gb-block-gb-button__wrapper"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wp-block-gb-block-gb-button__btn full-width"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    className: "wp-block-gb-block-gb-button__btn-text",
-    href: url,
-    value: text
-  })))));
+    className: "wp-block-gb-block-gb-button__btn-text"
+  }, text)))));
 }
 
 /***/ }),
