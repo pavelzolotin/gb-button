@@ -18,6 +18,15 @@
 .wp-block-gb-block-gb-button:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce).gb-button-align-left {
   text-align: left;
 }
+.wp-block-gb-block-gb-button__wrapper {
+  width: 50%;
+}
+@media (max-width: 768px) {
+  .wp-block-gb-block-gb-button__wrapper {
+    width: 100%;
+    padding: 0 10px 0 10px;
+  }
+}
 .wp-block-gb-block-gb-button__btn {
   display: inline-block;
   height: 60px;
@@ -25,13 +34,18 @@
   border-radius: 4px;
   background: linear-gradient(135.46deg, #45c7d2 0%, #3199a2 100%);
   box-shadow: 0 0 30px -8px #3eb9c3;
-  padding: 0 72px;
   color: #fff;
   line-height: 60px;
   text-align: center;
   font-weight: normal;
   cursor: pointer;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.wp-block-gb-block-gb-button__btn a {
+  font-size: 24px;
+  padding: 14px 72px;
+  color: #fff;
+  text-decoration: none;
 }
 .wp-block-gb-block-gb-button__btn:hover {
   background: linear-gradient(135deg, #3199a2 0%, #3199a2 9.23%, #45c7d2 100%);
@@ -45,6 +59,16 @@
 
 .full-width {
   width: 100%;
+  padding: 0;
+}
+
+.wp-block-gb-block-gb-button {
+  width: 100%;
+  height: 100%;
+}
+.wp-block-gb-block-gb-button:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) > .wp-block-gb-block-gb-button__wrapper > .wp-block-gb-block-gb-button__btn > a:focus {
+  background: none;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style-index.css.map*/
